@@ -91,8 +91,12 @@ export class AuthService {
     });
   }
 
-  onLogin(body: any): Promise<boolean>  {
+  onLogin(values: any): Promise<boolean>  {
     return new Promise<boolean>((resolve, reject) => {
+    let body = {
+      Email: values.email,
+      Password: values.password,
+    };
     this.http.post(this.apiUrl + 'User/LOGIN', body).subscribe(
       (res: any) => {
         this._snackBar.open(res.message, '', { duration: 3000 });
