@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\expense-tracker-main\\dotnet-api-temp\\dotnet-api-temp.csproj": {}
+    "/home/ec2-user/angular-dotnet-sql-fullstackproject/dotnet-api-temp/dotnet-api-temp.csproj": {}
   },
   "projects": {
-    "D:\\expense-tracker-main\\dotnet-api-temp\\dotnet-api-temp.csproj": {
+    "/home/ec2-user/angular-dotnet-sql-fullstackproject/dotnet-api-temp/dotnet-api-temp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\expense-tracker-main\\dotnet-api-temp\\dotnet-api-temp.csproj",
+        "projectUniqueName": "/home/ec2-user/angular-dotnet-sql-fullstackproject/dotnet-api-temp/dotnet-api-temp.csproj",
         "projectName": "dotnet-api-temp",
-        "projectPath": "D:\\expense-tracker-main\\dotnet-api-temp\\dotnet-api-temp.csproj",
-        "packagesPath": "C:\\Users\\vamsi\\.nuget\\packages\\",
-        "outputPath": "D:\\expense-tracker-main\\dotnet-api-temp\\obj\\",
+        "projectPath": "/home/ec2-user/angular-dotnet-sql-fullstackproject/dotnet-api-temp/dotnet-api-temp.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/home/ec2-user/angular-dotnet-sql-fullstackproject/dotnet-api-temp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vamsi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -95,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\dotnet-sdk-8.0.406-win-x64\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.117/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

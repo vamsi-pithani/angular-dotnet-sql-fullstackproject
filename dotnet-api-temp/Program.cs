@@ -32,8 +32,9 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure Kestrel server to use a different port (e.g., 5070)
+// Comment out or remove the following lines to allow environment variable ASPNETCORE_URLS to take effect
 app.Urls.Clear();
-app.Urls.Add("http://localhost:5070");
+app.Urls.Add("http://0.0.0.0:5070");
 
 // Enable Swagger middleware
 if (app.Environment.IsDevelopment())
