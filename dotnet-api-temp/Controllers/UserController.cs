@@ -66,7 +66,7 @@ namespace DotnetApi.Controllers
         [HttpPost("SIGN_UP")]
         public async Task<IActionResult> SignUp([FromBody] User user)
         {
-            if (await _context.Users.AnyAsync(u => u.Email == user.Email))
+            if (await _context.Users.AnyAsync(u => u.Email.ToLower() == user.Email.ToLower()))
             {
                 return BadRequest(new { message = "Email already exists" });
             }
