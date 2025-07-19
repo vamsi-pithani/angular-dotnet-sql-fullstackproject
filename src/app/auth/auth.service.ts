@@ -46,14 +46,11 @@ export class AuthService {
   onSignUp(values: any):Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
     let body = {
-      name: values.name,
-      username: values.username,
-      gmail: values.gmail,
-      password: values.password,
-      userFirstSignUp: new Date(),
-      category:['Transportation','Groceries','Entertainment','Unassigned'],
+      Email: values.gmail,
+      Username: values.username,
+      Password: values.password,
     };
-    this.http.post(this.apiUrl + 'USER/SIGN_UP', body).subscribe(
+    this.http.post(this.apiUrl + 'User/SIGN_UP', body).subscribe(
       (res: any) => {
         if (res) {
           this._snackBar.open(
@@ -96,7 +93,7 @@ export class AuthService {
 
   onLogin(body: any): Promise<boolean>  {
     return new Promise<boolean>((resolve, reject) => {
-    this.http.post(this.apiUrl + 'USER/LOGIN', body).subscribe(
+    this.http.post(this.apiUrl + 'User/LOGIN', body).subscribe(
       (res: any) => {
         this._snackBar.open(res.message, '', { duration: 3000 });
         this.token = res.data.token;

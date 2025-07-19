@@ -48,21 +48,21 @@ export class BusinessDataService {
 
   onGetAllExpense(id:any) {
     this.userId=id;
-    return this.http.get(this.apiUrl + 'GET_ALL_EXPENSE/'+id);
+    return this.http.get(this.apiUrl + 'Expenses/GET_ALL_EXPENSE/'+id);
   }
 
   onCreateExpense(values: any,date:any) {
     let id=sessionStorage.getItem('Id')?.split(' ')[1];
     let body={
-      name: values.name,
-      amount: values.amount,
-      expense_date: (date[0]+' '+date[1]+' '+date[2]+' '+date[3]),
-      expense_category: values.expense_category,
-      payment: values.payment,
-      comment: values.comment,
-      creater:id,
+      Name: values.name,
+      Amount: values.amount,
+      ExpenseDate: (date[0]+' '+date[1]+' '+date[2]+' '+date[3]),
+      ExpenseCategory: values.expense_category,
+      Payment: values.payment,
+      Comment: values.comment,
+      Creater: id,
     }
-    return this.http.post(this.apiUrl + 'CREATE_EXPENSE', body);
+    return this.http.post(this.apiUrl + 'Expenses/CREATE_EXPENSE', body);
   }
 
 
@@ -72,15 +72,15 @@ export class BusinessDataService {
     date=(new Date(date[2],date[1]-1,date[0])).toString();
     date=date.split(' ');
     let body={
-      name: values.expense_name,
-      amount: values.amount,
-      expense_date: (date[0]+' '+date[1]+' '+date[2]+' '+date[3]),
-      expense_category: values.expense_category,
-      payment: values.payment_type,
-      comment: values.comment,
-      creater:id,
+      Name: values.expense_name,
+      Amount: values.amount,
+      ExpenseDate: (date[0]+' '+date[1]+' '+date[2]+' '+date[3]),
+      ExpenseCategory: values.expense_category,
+      Payment: values.payment_type,
+      Comment: values.comment,
+      Creater: id,
     }
-    return this.http.post(this.apiUrl+'CREATE_EXPENSE',body);
+    return this.http.post(this.apiUrl+'Expenses/CREATE_EXPENSE',body);
   }
 
 
@@ -104,13 +104,13 @@ export class BusinessDataService {
     let str=values.expense_date.toString();
     let date=str.split(' ');
     let body={
-      name: values.name,
-      amount: values.amount,
-      expense_date: (date[0]+' '+date[1]+' '+date[2]+' '+date[3]),
-      expense_category: values.expense_category,
-      payment: values.payment,
-      comment: values.comment,
-      creater:this.userId,
+      Name: values.name,
+      Amount: values.amount,
+      ExpenseDate: (date[0]+' '+date[1]+' '+date[2]+' '+date[3]),
+      ExpenseCategory: values.expense_category,
+      Payment: values.payment,
+      Comment: values.comment,
+      Creater: this.userId,
     }
     return this.http.patch(this.apiUrl+'UPDATE_EXPENSE/'+this.userId+'/'+id,body);
   }

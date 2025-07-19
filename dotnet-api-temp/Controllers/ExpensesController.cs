@@ -33,7 +33,7 @@ namespace DotnetApi.Controllers
         {
             _context.Expenses.Add(expense);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetExpenseById), new { id = expense.Id }, expense);
+return CreatedAtAction(nameof(GetExpenseById), new { userId = expense.Creater, id = expense.Id }, expense);
         }
 
         [HttpGet("GET_SINGLE_EXPENSE/{userId}/{id}")]
