@@ -41,27 +41,35 @@ namespace DotnetApi.Controllers
             }
         }
 
-        private string GenerateJwtToken(User user)
-        {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+private string GenerateJwtToken(User user)
+{
+    if (string.IsNullOrEmpty(_configuration["Jwt:Key"]) ||
+        string.IsNullOrEmpty(_configuration["Jwt:Issuer"]) ||
+        string.IsNullOrEmpty(_configuration["Jwt:Audience"]) ||
+        string.IsNullOrEmpty(user.Email))
+    {
+        throw new ArgumentNullException("JWT configuration or user email is missing.");
+    }
 
-            var claims = new[]
-            {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                new Claim("userId", user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
+    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.Now.AddHours(1),
-                signingCredentials: creds);
+    var claims = new[]
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+        new Claim("userId", user.Id.ToString()),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
+    var token = new JwtSecurityToken(
+        issuer: _configuration["Jwt:Issuer"],
+        audience: _configuration["Jwt:Audience"],
+        claims: claims,
+        expires: DateTime.Now.AddHours(1),
+        signingCredentials: creds);
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
 
         [HttpPost("SIGN_UP")]
         public async Task<IActionResult> SignUp([FromBody] User user)
